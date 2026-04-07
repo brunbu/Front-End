@@ -1,0 +1,36 @@
+*{
+    margin: 20px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sessao-noticias{
+    gap: 20px;
+    padding: 20px;
+    border: 20px;
+    padding: 20px;
+    height: 800px;
+    width: 920px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: green;
+    border: 1px solid black;
+}
+.noticias{
+    width: 150px;
+    height: 150px;
+    background-color: greenyellow;
+    color: black;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    
+}
