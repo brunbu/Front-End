@@ -1,0 +1,100 @@
+@font-face {
+    font-family:Architects;
+    src: url(../fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf);
+}
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #00d8fe, #00558a);
+    background-repeat: no-repeat;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.container--flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-header__imagem-perfil{
+    width: 100px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(218, 206, 111, 0.2);
+}
+
+.form-header__titulo{
+    color: #DACE6F;
+    font-family: Architects, sans-serif;
+}
+
+.form-header__text{
+    font-family: 'Architects', sans-serif;
+    margin-top: 10px;
+}
+
+.form-contact{
+    padding: 20px;  
+}
+.form-contact__linha{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+}
+
+.form-contact__col-a{
+    width: 20%;
+    height: 100%;
+}
+.form-contact__col-b{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 100%;
+}
+.form-contact__col-c{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+.form-contact__label{
+    font-family: 'Architects', sans-serif;
+    color:white;
+    font-weight: 300;
+    font-size: 18px;
+}
+.form-contact__input{
+    padding: 5px 10px;
+    height: 35px;
+    color: #18a2c9;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+    outline: none;
+    border-radius: 3px;
+    transition: background-color 0.4s, color 0.4s;
+}
+.form-contact__input:focus{
+    background-color: #18a2c9;
+    color: white;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+}
+
+.form-contact__input--metade{
+    width: 48%;
+    gap: 20px;
+}

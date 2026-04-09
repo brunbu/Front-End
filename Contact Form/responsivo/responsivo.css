@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+     font-family: 'Architects', sans-serif;
+}
+
+/* Breakpoints  Ponto de quebra do layout*/
+
+/* Tablests <992px (768px até 991px)*/
+@media screen and (max-width: 991px) {
+    h1{
+        color: #663605;
+    }
+    img{
+        display: none;
+    }
+}
+/* Smatphones < 768px (0px até 767px)*/
+@media screen and (max-width: 767px) {
+    h1{
+        color: blue;
+    }
+    img{
+        display: block;
+    }
+}
