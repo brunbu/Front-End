@@ -41,8 +41,8 @@
                     <label class="form-contact__label" for="telefone">Telefone</label>
                 </div>
                 <div class="form-contact__col-b">
-                    <input class="form-contact__input form-contact__input--terco" type="tel" id="telefone" name="telefone" placeholder="+55">
-                    <input class="form-contact__input form-contact__input--terco" type="tel" id="telefone" name="telefone" placeholder="ddd">
+                    <input class="form-contact__input form-contact__input--terco" type="tel" id="pais" name="telefone" placeholder="+55">
+                    <input class="form-contact__input form-contact__input--terco" type="tel" id="ddd" name="ddd" placeholder="ddd">
                     <input class="form-contact__input form-contact__input--terco" type="tel" id="telefone" name="telefone" placeholder=" 00000-0000">
                 </div>
             </div>
@@ -51,21 +51,21 @@
                     <label class="form-contact__label" for="endereco">Endereço</label>
                 </div>
                 <div class="form-contact__col-b">
-                    <input class="form-contact__input form-contact__input--quarto" type="text" id="endereco" name="endereco" placeholder="cep: 00000-000">
-                    <input class="form-contact__input form-contact__input--metade" type="text" id="endereco" name="endereco" placeholder="Rua: Exemplo">
-                    <input class="form-contact__input form-contact__input--quarto" type="text" id="endereco" name="endereco" placeholder="número: 0000">
+                    <input class="form-contact__input form-contact__input--quarto" type="text" id="cep" name="cep" placeholder="cep: 00000-000">
+                    <input class="form-contact__input form-contact__input--metade" type="text" id="rua" name="Rua" placeholder="Rua: Exemplo">
+                    <input class="form-contact__input form-contact__input--quarto" type="text" id="número" name="número" placeholder="número: 0000">
                 </div>
             </div>
             <div class="form-contact__linha form-contact__linha--2">
                 <div class="form-contact__col-b">
-                     <input class="form-contact__input form-contact__input--terco" type="text" id="endereco" name="endereco" placeholder="Apto: 000">
-                    <input class="form-contact__input form-contact__input--terco" type="text" id="endereco" name="endereco" placeholder="Bairro: Exemplo">
-                    <input class="form-contact__input form-contact__input--terco" type="text" id="endereco" name="endereco" placeholder="Cidade: Exemplo">
+                     <input class="form-contact__input form-contact__input--terco" type="text" id="apto" name="Apto" placeholder="Apto: 000">
+                    <input class="form-contact__input form-contact__input--terco" type="text" id="bairro" name="Bairro" placeholder="Bairro: Exemplo">
+                    <input class="form-contact__input form-contact__input--terco" type="text" id="cidade" name="Cidade" placeholder="Cidade: Exemplo">
                 </div>
             </div>
             <div class="form-contact__linha form-contact__linha--3">
                 <div class="form-contact__col-b">
-                     <input class="form-contact__input form-contact__input--terco" type="text" id="endereco" name="endereco" placeholder="Estado: Exemplo">
+                     <input class="form-contact__input form-contact__input--terco" type="text" id="estado" name="Estado" placeholder="Estado: Exemplo">
                 </div>
             </div>
              <div class="form-contact__linha">
@@ -79,7 +79,7 @@
             <div>
             <div class="form-contact__linha--button">
                 <div class="form-contact__col-b">
-                    <button class="form-contact__button" type="submit">Cadastrar</button>
+                    <button onclick="validarFormulario()" class="form-contact__button" type="submit">Cadastrar</button>
                 </div>
                 <div class="form-contact__col-b">
                     <button class="form-contact__button form-contact__button--cancelar" type="reset">Cancelar</button>
@@ -88,8 +88,9 @@
             Todos os direitos reservados
         </form>
     </div>
-</main>
-<footer>
+    </main>
+    <footer>
 </footer>
+        <script src="./js/script.js"></script>
 </body>
-</html>
+</html> 
