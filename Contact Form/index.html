@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,7 @@
 <body>
     <header class="form-header">
         <div class="container container--flex">
-        <img src="/Contact Form/images/vector.svg" alt="imagem de um usuário ilustrativo"
+        <img src="/images/vector.svg" alt="imagem de um usuário ilustrativo"
         class="form-header__imagem-perfil" >
         <h1 class="form-header__titulo">Contact Form</h1>
         <p class="form-header__texto">Insira os dados do contato e clique em enviar</p>
@@ -41,21 +40,56 @@
                 <div class="form-contact__col-a">
                     <label class="form-contact__label" for="telefone">Telefone</label>
                 </div>
-                <div class="form-contact__col-c">
-                    <input class="form-contact__input form-contact__input--terco" type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
-                </div>
-                <div class="form-contact__col-c">
-                    <input class="form-contact__input form-contact__input--terco" type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
-                </div>
-                <div class="form-contact__col-c">
-                    <input class="form-contact__input form-contact__input--terco" type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                <div class="form-contact__col-b">
+                    <input class="form-contact__input form-contact__input--terco" type="tel" id="telefone" name="telefone" placeholder="+55">
+                    <input class="form-contact__input form-contact__input--terco" type="tel" id="telefone" name="telefone" placeholder="ddd">
+                    <input class="form-contact__input form-contact__input--terco" type="tel" id="telefone" name="telefone" placeholder=" 00000-0000">
                 </div>
             </div>
+            <div class="form-contact__linha">
+                <div class="form-contact__col-a">
+                    <label class="form-contact__label" for="endereco">Endereço</label>
+                </div>
+                <div class="form-contact__col-b">
+                    <input class="form-contact__input form-contact__input--quarto" type="text" id="endereco" name="endereco" placeholder="cep: 00000-000">
+                    <input class="form-contact__input form-contact__input--metade" type="text" id="endereco" name="endereco" placeholder="Rua: Exemplo">
+                    <input class="form-contact__input form-contact__input--quarto" type="text" id="endereco" name="endereco" placeholder="número: 0000">
+                </div>
+            </div>
+            <div class="form-contact__linha form-contact__linha--2">
+                <div class="form-contact__col-b">
+                     <input class="form-contact__input form-contact__input--terco" type="text" id="endereco" name="endereco" placeholder="Apto: 000">
+                    <input class="form-contact__input form-contact__input--terco" type="text" id="endereco" name="endereco" placeholder="Bairro: Exemplo">
+                    <input class="form-contact__input form-contact__input--terco" type="text" id="endereco" name="endereco" placeholder="Cidade: Exemplo">
+                </div>
+            </div>
+            <div class="form-contact__linha form-contact__linha--3">
+                <div class="form-contact__col-b">
+                     <input class="form-contact__input form-contact__input--terco" type="text" id="endereco" name="endereco" placeholder="Estado: Exemplo">
+                </div>
+            </div>
+             <div class="form-contact__linha">
+                <div class="form-contact__col-a">
+                    <label class="form-contact__label" for="anotacoes">Anotações</label>
+                </div>
+                <div class="form-contact__col-b">
+                    <textarea class="form-contact__input form-contact__textarea" type="text" id="anotacoes" name="anotacoes" placeholder="Suas anotações aqui"></textarea>
+                </div>
+            </div>
+            <div>
+            <div class="form-contact__linha--button">
+                <div class="form-contact__col-b">
+                    <button class="form-contact__button" type="submit">Cadastrar</button>
+                </div>
+                <div class="form-contact__col-b">
+                    <button class="form-contact__button form-contact__button--cancelar" type="reset">Cancelar</button>
+                </div>
+            </div>
+            Todos os direitos reservados
         </form>
     </div>
 </main>
 <footer>
-    Todos os direitos reservados
 </footer>
 </body>
 </html>
