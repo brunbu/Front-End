@@ -1,90 +1,131 @@
-@font-face{
-    font-family:Architects;
-    src: url('../css/fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf');
+@font-face {
+    font-family: Architects;
+    src: url('../fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf');
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh; 
     background-image: linear-gradient(to right bottom, #1844c9);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
+    padding-bottom: 30px; 
 }
 
-.container{
+.container {
     width: 100%;
+    max-width: 1200px; /* Limita o tamanho máximo em monitores ultrawide */
     height: 100%;
     margin: 0 auto;
-    /* border: 1px solid white; */
 }
 
-.container--flex{
+.container--flex {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center; /* Centraliza o texto no mobile */
 }
 
-.form-header__imagem-perfil{
+.form-header__imagem-perfil {
     width: 100px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(218, 206, 111, 0.2);
+    margin-top: 20px;
 }
 
-.form-header__titulo{
+.form-header__titulo {
     color: #DACE6F;
     font-family: Architects, sans-serif;
 }
 
-.form_header__texto{
+.form-header__texto {
     font-family: 'Courier New', Courier, monospace;
+    color: white; /* Adicionado para garantir leitura */
+    margin-bottom: 20px;
 }
 
-.form-contact{
+.form-contact {
     padding: 20px;
+    width: 100%;
+    max-width: 900px; /* Limita a largura do formulário */
+    margin: 0 auto;
 }
-.form-contact__linha{
+
+.form-contact__linha {
     display: flex;
     justify-content: space-between;
-    align-items: top;
+    align-items: flex-start; /* Alinha os itens no topo */
     width: 100%;
     margin-bottom: 15px;
-    /* height: 60px; */
-    /* border: 1px solid yellowgreen; */
-}
-.form-contact__linha--2{
-    margin-left: 290px;
-    /* height: 60px; */
-    /* border: 1px solid yellowgreen; */
-}
-.form-contact__linha--3{
-    margin-bottom: 30px;
-    margin-left: 290px;
-    /* height: 60px; */
-    /* border: 1px solid yellowgreen; */
 }
 
-.form-contact__col-a{
+/* Removido o margin-left: 290px e substituído por justify-content: flex-end.
+   Isso joga a coluna B para a direita automaticamente em telas grandes! */
+.form-contact__linha--2,
+.form-contact__linha--3 {
+    justify-content: flex-end; 
+}
+
+.form-contact__col-a {
     width: 20%;
-    height: 100%;
-    /* border: 1px solid red; */
 }
 
-.form-contact__label{
+.form-contact__label {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
     font-size: 18px;
     color: white;
+    display: block;
+    margin-bottom: 5px;
 }
 
-.form-contact__col-b{
+/* Adicionado display: flex na coluna B para controlar os inputs melhor */
+.form-contact__col-b {
     width: 80%;
-    height: 100%;
-    /* border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px; /* Adiciona espaço entre os inputs */
+}
+
+.form-contact__input {
+    padding: 5px 10px;
+    width: 100%; /* Padrão 100% caso não tenha classe específica */
+    height: 35px;
+    color: #18a2c9;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    outline: none;
+    border-radius: 3px;
+    transition: background-color 0.4s, color 0.4s;
+    font-family: inherit;
+} 
+
+.form-contact__input:focus {
+    background-color: #18a2c9;
+    color: white;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+}
+
+.form-contact__input--metade {
+    width: 48%;
+}
+.form-contact__input--terco {
+    width: 31%;
+}
+.form-contact__input--quarto {
+    width: 23%;
+}
+
+.form-contact__textarea {
+    height: 220px;
+    resize: none;
 }
 
 .form-contact__linha--button {
@@ -97,62 +138,63 @@ body{
 }
 
 .form-contact__linha--button .form-contact__col-b {
-    flex: 0 0 auto;
-    width: auto;
-}
-.form-contact__col-c{
-    width:26.7%;
-    height: 100%;
-    /* border: 1px solid red; */
-}
-/*tudo que é padrão nos inputs ficará aqui*/
-.form-contact__input{
-    padding: 5px 10px;
-    width: 96.5%;
-    height: 35px;
-    color: #18a2c9;
-    border: none;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-    outline: none;
-    border-radius: 3px;
-    transition: background-color 0.4s, color 0.4s;
-} 
-
-.form-contact__input:focus{
-    background-color: #18a2c9;
-    color: white;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+    flex: 1;
+    justify-content: center;
 }
 
-.form-contact__input--metade{
-    width: 48%;
-}
-.form-contact__input--terco{
-    width: 32%;
-}
-.form-contact__input--quarto{
-    width: 24%;
-}
-.form-contact__textarea{
-    height: 220px;
-    /*O text area nao pode ser redimensionado*/
-    resize: none;
-}
-.form-contact__button{
-    width: 500px;
+.form-contact__button {
+    width: 100%;
+    max-width: 300px;
     padding: 10px 20px;
     background-color: transparent;
     color: white;
     border: 2px solid white;
     border-radius: 3px;
     cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.form-contact__linha--button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    margin-top: 20px;
+.form-contact__button:hover {
+    background-color: white;
+    color: #1844c9;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .form-contact__linha {
+        flex-direction: column;
+    }
+
+    .form-contact__col-a,
+    .form-contact__col-b {
+        width: 100%;
+    }
+
+    .form-contact__col-b {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-contact__input--metade,
+    .form-contact__input--terco,
+    .form-contact__input--quarto {
+        width: 100%;
+    }
+
+    .form-contact__linha--button {
+        flex-direction: column; 
+        gap: 15px;
+    }
+
+    .form-contact__button {
+        max-width: 100%;
+    }
 }
