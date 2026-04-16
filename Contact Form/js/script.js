@@ -1,152 +1,241 @@
-function validarFormulario() {
-    let nome = document.getElementById('nome').value;
-    
-    let quantidadeErros = 0;
+/**
+ *  Esta função recebe os dados do formulário em um objeto javascritp
+    e em seguida chama a api para cadastrar
+  */ 
+ async function cadastrarContato(objetoContato) {
+    console.log(objetoContato);
 
-    if(nome.trim().length == 0){
-        formError("nome");
-        quantidadeErros++;
-        // alert("O campo nome é obrigatório!");
+    //chamar a api com o fetch
+    const resposta = await fetch("http://localhost:3000/Contato", 
+{
+    method: "POST",
+    body: JSON.stringify(objetoContato),//converte o objeto javascript em JSON
+    headers:{
+        "Content-Type": "application/json; charset=UTF-8" //informar que o corpo da requisição é um JSON
     }
-    else{
+});
+
+}
+    
+// ==================== BUSCAR ENDEREÇO PELO CEP =================
+async function buscarEndereco(cep) {
+    // alert("Função rodando");
+    // return false;
+
+    if (cep.trim().length < 8) {
+        alert("O CEP deve conter 8 números");
+        return false;
+    }
+    //buscar o cep
+    
+    try {
+        aguardandoCampos();
+        let retorno = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        let dados = await retorno.json();
+        console.log(dados);
+        console.log(dados.logradouro);
+        console.log(dados.bairro);
+        console.log(dados.localidade);
+        console.log(dados.uf);
+        console.log(dados.complemento);
+        
+        document.getElementById("rua").value = dados.logradouro;
+        document.getElementById("bairro").value = dados.bairro;
+        document.getElementById("cidade").value = dados.localidade;
+        document.getElementById("estado").value = dados.uf;
+        document.getElementById("complemento").value = dados.complemento;
+      
+    }
+    catch (error) {
+        return false;
+    }
+
+
+    function aguardandoCampos(){
+        document.getElementById("rua").value = "Aguardando...";
+        document.getElementById("bairro").value = "Aguardando...";
+        document.getElementById("cidade").value = "Aguardando...";
+        document.getElementById("estado").value = "Aguardando...";
+        // document.getElementById("complemento").value = "Aguardando...";
+    }
+}
+
+
+// ================= VALIDAÇÃO DO FORMULÁRIO =================
+function validarFormulario() {
+    let quantidadeErro = 0;
+
+    let nome = document.getElementById("nome").value;
+    let sobrenome = document.getElementById("sobrenome").value;
+    let email = document.getElementById("email").value;
+
+    let telPais = document.getElementById("telefone-pais").value;
+    let telDDD = document.getElementById("telefone-ddd").value;
+    let telNumero = document.getElementById("telefone-numero").value;
+
+    let cep = document.getElementById("cep").value;
+    let rua = document.getElementById("rua").value;
+    let numero = document.getElementById("numero").value;
+    let cidade = document.getElementById("cidade").value;
+    let estado = document.getElementById("estado").value;
+    let complemento = document.getElementById("complemento").value;
+    let bairro = document.getElementById("bairro").value;
+    let anotacoes = document.getElementById("anotacoes").value;
+
+    // parte do NOME 
+    if (nome.trim() === "") {
+        formError("nome");
+        quantidadeErro++;
+    } else {
         reiniciaBorda("nome");
     }
 
-    let sobrenome = document.getElementById('sobrenome').value;
-    
-    if(sobrenome.trim().length == 0){
+    // SOBRENOME
+    if (sobrenome.trim() === "") {
         formError("sobrenome");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
+        quantidadeErro++;
+    } else {
         reiniciaBorda("sobrenome");
     }
-    let email = document.getElementById('email').value;
-    
-    if(email.trim().length == 0){
+
+    // EMAIL
+
+    if (email.trim() === "" || !email.includes("@")) {
         formError("email");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
+        quantidadeErro++;
+    } else {
         reiniciaBorda("email");
     }
-    let pais = document.getElementById('pais').value;
-    
-    if(pais.trim().length == 0){
-        formError("pais");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
+
+    // TELEFONE
+    if (telPais.trim() === "") {
+        formError("telefone-pais");
+        quantidadeErro++;
+    } else {
+        reiniciaBorda("telefone-pais");
     }
-    else{
-        reiniciaBorda("pais");
+
+    if (telDDD.trim().length < 2) {
+        formError("telefone-ddd");
+        quantidadeErro++;
+    } else {
+        reiniciaBorda("telefone-ddd");
     }
-    let ddd = document.getElementById('ddd').value;
-    
-    if(ddd.trim().length == 0){
-        formError("ddd");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
+
+    if (telNumero.trim().length < 8) {
+        formError("telefone-numero");
+        quantidadeErro++;
+    } else {
+        reiniciaBorda("telefone-numero");
     }
-    else{
-        reiniciaBorda("ddd");
-    }
-    let telefone = document.getElementById('telefone').value;
-    
-    if(telefone.trim().length == 0){
-        formError("telefone");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
-        reiniciaBorda("telefone");
-    }
-    let cep = document.getElementById('cep').value;
-    
-    if(cep.trim().length == 0){
+
+
+    // ENDEREÇO
+
+    if (cep.trim().length < 8) {
         formError("cep");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
+        quantidadeErro++;
+    } else {
         reiniciaBorda("cep");
     }
-    let rua = document.getElementById('rua').value;
-    
-    if(rua.trim().length == 0){
+
+    if (rua.trim() === "") {
         formError("rua");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
+        quantidadeErro++;
+    } else {
         reiniciaBorda("rua");
     }
-    let numero = document.getElementById('numero').value;
-    
-    if(numero.trim().length == 0){
+
+    if (numero.trim() === "") {
         formError("numero");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
+        quantidadeErro++;
+    } else {
         reiniciaBorda("numero");
     }
-    let apto = document.getElementById('apto').value;
-    
-    if(apto.trim().length == 0){
-        formError("apto");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
-        reiniciaBorda("apto");
-    }
-    let bairro = document.getElementById('bairro').value;
-    
-    if(bairro.trim().length == 0){
-        formError("bairro");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
-        reiniciaBorda("bairro");
-    }
-    let cidade = document.getElementById('cidade').value;
-    
-    if(cidade.trim().length == 0){
+
+    if (cidade.trim() === "") {
         formError("cidade");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
+        quantidadeErro++;
+    } else {
         reiniciaBorda("cidade");
     }
-    let estado = document.getElementById('estado').value;
-    
-    if(estado.trim().length == 0){
+
+    if (estado.trim() === "") {
         formError("estado");
-        quantidadeErros++;
-        // alert("O campo sobrenome é obrigatório!");
-    }
-    else{
+        quantidadeErro++;
+    } else {
         reiniciaBorda("estado");
     }
 
-    if(quantidadeErros > 0){
-        alert("Existem " + quantidadeErros + " erros no formulário!");
-        quantidadeErros = 0;
+    if (complemento.trim() === "") {
+        formError("complemento");
+        quantidadeErro++;
+    } else {
+        reiniciaBorda("complemento");
     }
-    else{
+
+    if (bairro.trim() === "") {
+        formError("bairro");
+        quantidadeErro++;
+    } else {
+        reiniciaBorda("bairro");
+    }
+
+    if (anotacoes.trim() === "") {
+        formError("anotacoes");
+        quantidadeErro++;
+    } else {
+        reiniciaBorda("anotacoes");
+    }
+
+
+
+
+    // hora de cadastrar
+    if (quantidadeErro > 0) {
+        alert("Existem " + quantidadeErro + " campo(s) com erro, por favor verifique!");
+    } else {
         alert("Formulário enviado com sucesso!");
         reiniciaTodasAsBordas();
     }
+
+    //Gerar objeto de contato
+    let objetoContato = {
+        nome: nome,
+        sobrenome: sobrenome,
+        email: email,
+        telefone: `${telPais}${telDDD}${telNumero}`,
+        cep: cep,
+        rua: rua,
+        numero: numero,
+        cidade: cidade,
+        estado: estado,
+        complemento: complemento,
+        bairro: bairro,
+        anotacoes: anotacoes
+    };
+
+    let cadastrado = cadastrarContato(objetoContato);
+
+    // alert("Cadastrado com sucesso!");
+    reiniciaTodasAsBordas();
+
 }
 
-function formError(idCampo){
+
+
+function formError(idCampo) {
     document.getElementById(idCampo).style.border = "2px solid red";
 }
 
-function reiniciaBorda(idCampo){
-    document.getElementById(idCampo).style.border = "transparent";
+function reiniciaBorda(idCampo) {
+    document.getElementById(idCampo).style.border = "1px solid #ccc";
+}
+
+function reiniciaTodasAsBordas() {
+    let campos = document.querySelectorAll("input, textarea");
+
+    campos.forEach(campo => {
+        campo.style.border = "1px solid #ccc";
+    });
 }
