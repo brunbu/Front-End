@@ -1,0 +1,26 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Bruno",
+      "idade": 17,
+      "Email": "bruno@example.com"
+    },
+    {
+      "id": "2",
+      "nome": "Murilo",
+      "idade": 17,
+      "Email": "murilo@example.com"
+    }
+  ],
+  "Post": [
+    {
+      "texto": "James Doakes",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluEkdL18ugi3-EqRN4k_G4mBeFoYK0Qi2tA&s",
+      "qtdCurtidas": 501,
+      "id": "L56fG-UMh20"
+    }
+  ],
+  "jogos": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
