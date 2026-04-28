@@ -22,5 +22,79 @@
     }
   ],
   "jogos": [],
+  "imc": [
+    {
+      "nome": "Bucha",
+      "altura": 1.75,
+      "peso": 65,
+      "imc": 21.224489795918366,
+      "situacao": "Saudável",
+      "id": "pBozND7uSpc"
+    },
+    {
+      "nome": "Bruno",
+      "altura": 1.82,
+      "peso": 106,
+      "imc": 32.00096606690013,
+      "situacao": "Obesidade Grau I",
+      "id": "-xXKzpVgJZs"
+    },
+    {
+      "nome": "Amy lee",
+      "altura": 1.62,
+      "peso": 63,
+      "imc": 24.005486968449926,
+      "situacao": "Saudável",
+      "id": "G9uQbYLTL3M"
+    },
+    {
+      "nome": "James",
+      "altura": 1.8,
+      "peso": 78,
+      "imc": 24.074074074074073,
+      "situacao": "Saudável",
+      "id": "gD4ImRDWxjA"
+    },
+    {
+      "nome": "Murilo",
+      "altura": 1.8,
+      "peso": 55,
+      "imc": 16.975308641975307,
+      "situacao": "Magreza moderada",
+      "id": "0qOjLwXPzaw"
+    },
+    {
+      "nome": "Henrique",
+      "altura": 1.74,
+      "peso": 76,
+      "imc": 25.102391333069097,
+      "situacao": "Sobrepeso",
+      "id": "HQ3VffNMjFc"
+    },
+    {
+      "nome": "Samuel",
+      "altura": 1.75,
+      "peso": 78,
+      "imc": 25.46938775510204,
+      "situacao": "Sobrepeso",
+      "id": "PmAlxK-VquQ"
+    },
+    {
+      "nome": "Barney",
+      "altura": 1.73,
+      "peso": 68,
+      "imc": 22.720438370810918,
+      "situacao": "Saudável",
+      "id": "hZpD_1PAZUA"
+    },
+    {
+      "nome": "pedro enzo",
+      "altura": 1.8,
+      "peso": 68,
+      "imc": 20.98765432098765,
+      "situacao": "Saudável",
+      "id": "IxjlBXgDnJ8"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
