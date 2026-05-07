@@ -5,8 +5,8 @@ function App() {
  return (
   <>
   <div>
+    <Title nome="Bruno" sobrenome="Silva" texto="Bem Vindo"/>
     <Title texto="Bem Vindo, sou um titulo"/>
-    <Title texto="Eu sou outro titulo"/>
     <Paragrafo linha="Sou um Paragrafo"/>
   </div>
   </>
