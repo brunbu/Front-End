@@ -54,9 +54,13 @@ const App = () => {
         <Contato nome="Bruno" telefone="(11) 98762-6543" email="brunorsilva@gmail.com"/>  
       */}
 
-      {
+      {/*
         <Jogo nome="Uncharted 4" plataforma="Ps4" preco={200.00} imagem={imagem}/>
-      }
+      */}
+
+      {/*
+        <ItemLoja nome="Camisa Polo" preco={79.99} categoria="Vestuario" estoque={5}/>
+      */}
 
 
 
