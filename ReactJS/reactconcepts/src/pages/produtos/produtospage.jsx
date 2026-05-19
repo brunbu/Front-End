@@ -1,6 +1,7 @@
+import axios from "axios";
 import "./produtospage.css";
 import { useEffect, useState } from "react";
-
+import api from "../../Services/services";
 export const ProdutosPages = () => {
 
     // lista
@@ -9,19 +10,22 @@ export const ProdutosPages = () => {
     // states
     const [titulo, setTitulo] = useState("");
     const [categoria, setCategoria] = useState("");
-    const [preco, setPreco] = useState(0);
-    const [estoque, setEstoque] = useState(0);
-    const [descricao, setDescricao] = useState("");
-    const [imagem, setImagem] = useState("hero.png");
-
+    const [preco, setPreco] = useState("");
+    const [estoque, setEstoque] = useState("");
+    const [imagem, setImagem] = useState("");
+    const [editar, setEditar] = useState(false)
+    const [idProduto, setIdProduto] = useState(null);
 //função get dados
      async function getDados() {
 
             try {
 
-                const retornoAPI = await fetch("http://localhost:3000/produtos");
+                //GetDados utilizando axios
+                const retornoAPI = await api.get("/produtos")
+                const dados = await retornoAPI.data;
 
-                const dados = await retornoAPI.json();
+                // const retornoAPI = await fetch("http://localhost:3000/produtos");
+                // const dados = await retornoAPI.json();
 
                 setListaProdutos(dados);
 
@@ -34,30 +38,31 @@ export const ProdutosPages = () => {
            
         }
 
-    // função deletar
+    // função deletar com axios
     async function Deletar(id) {
-        
-        try {
 
-            const response = await fetch(`http://localhost:3000/produtos/${id}`, {
-                method: "DELETE"
-            });
+    try {
 
-        } catch (error) {
-            console.log(error);
+        const response = await api.delete(`/produtos/${id}`);
+
+        if (response.status === 200) {
+
+            alert("Produto DELETADO com sucesso!!");
+
+            // atualiza a lista
+            getDados();
+
         }
 
-        
-        getDados()
-        if(retornoAPI.status == 200 && retornoAPI.statusText == "Ok"){
-               alert("Produto apagado com sucesso")
-               setListaProdutos(novaLista);
-           }
-           else{
-            alert("Erro ao cadastrar o produto  ")
-           }
+    } catch (error) {
+
+        console.log(error);
+
+        alert("Erro ao deletar produto");
+
     }
 
+}
 
     // carregar produtos
     useEffect(() => {
@@ -67,10 +72,11 @@ export const ProdutosPages = () => {
 
     }, []);
 
-    // cadastrar produto
+    // cadastrar produto com axios
     const cadastrar = async (e) => {
 
         e.preventDefault();
+
 
         // validação
         if (
@@ -89,7 +95,6 @@ export const ProdutosPages = () => {
         const novoProduto = {
             titulo,
             categoria,
-            descricao,
             preco,
             estoque,
             imagem
@@ -97,40 +102,96 @@ export const ProdutosPages = () => {
 
         try {
 
-            const resposta = await fetch("http://localhost:3000/produtos", {
+            //parte do axios
+            const resposta = await api.post("/produtos", novoProduto)
 
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify(novoProduto)
-
-            });
-
-            const produtoCadastrado = await resposta.json();
+            const produtoCadastrado = await resposta.data
 
             // adiciona na lista
-            setListaProdutos([...listaProdutos, produtoCadastrado]);
+            setListaProdutos([...listaProdutos,produtoCadastrado]);
 
             // limpa campos
-            setTitulo("");
-            setCategoria("");
-            setPreco(0);
-            setEstoque(0);
-            setDescricao("");
-            setImagem("hero.png");
+            
 
-            alert("Produto cadastrado!");
+            alert("Produto CADASTRADO!!");
 
         } catch (error) {
 
             console.log(error);
 
         }
-
+        limparFormulario()
     };
+
+    //Limpar o formulário
+    function limparFormulario() {
+        setIdProduto(null)
+            setTitulo("");
+            setCategoria("");
+            setPreco("");
+            setEstoque("");
+            setImagem("");
+    }
+
+
+    //FUnção Editar
+     const Editar = async (e) => {
+
+    e.preventDefault();
+
+    // validação
+    if (
+        titulo.trim().length === 0 ||
+        categoria.trim().length === 0 ||
+        preco <= 0 ||
+        estoque <= 0
+    ) {
+
+        alert("Preencha todos os campos corretamente");
+
+        return;
+
+    }
+
+    // objeto atualizado
+    const novoProdutoAT = {
+        titulo,
+        categoria,
+        preco,
+        estoque,
+        imagem
+    };
+
+    try {
+
+        const resposta = await api.put(`/produtos/${idProduto}`,novoProdutoAT );
+
+        // AXIOS USA STATUS
+        if (resposta.status === 200) {
+
+            alert("Produto EDITADO!!");
+
+            // atualizar lista
+            getDados();
+
+            // limpar formulário
+            limparFormulario();
+
+            // sair modo edição
+            setEditar(false);
+
+        }
+
+    } catch (error) {
+
+        console.log(error);
+
+        alert("Erro ao editar produto");
+
+    }
+
+};
+
 
     return (
         <>
@@ -147,7 +208,7 @@ export const ProdutosPages = () => {
 
                     <h2>Cadastrar Produto</h2>
 
-                    <form id="formProduto" onSubmit={cadastrar}>
+                    <form id="formProduto" onSubmit={editar ? Editar : cadastrar}>
 
                         <input
                             className="class-input"
@@ -206,13 +267,30 @@ export const ProdutosPages = () => {
                             required
                         />
 
-                        <button
+                        <div className="buttons">
+                             <button
                             type="submit"
                             className="button"
                         >
-                            Cadastrar Produto
+                            Salvar
                         </button>
 
+                            {editar && (
+                                <button
+                            type="submit"
+                            className="button-cancel"
+                            onClick={() =>{
+                                setEditar(false)
+                                limparFormulario()
+                            }}
+                        >
+                            Cancelar
+                        </button>
+                            )}
+                        
+
+                            </div>
+                       
                     </form>
 
                 </section>
@@ -252,17 +330,44 @@ export const ProdutosPages = () => {
                                 </p>
 
                                 <p className="estoque">
-                                    Estoque: {p.estoque} <strong>X</strong>
+                                    Estoque: {p.estoque} 
                                 </p>
 
-                                <a href="" onClick={(e) => {
-                                    e.preventDefault()
-                                    Deletar(p.id)
-                                }}>Apagar</a>
+                         <div className="buttons-card">
 
+                                 {/*EDITAR*/}
+                                <a
+                                    className="edit"
+                                    href=""
+                                    onClick={(e) => {
 
+                                        e.preventDefault();
 
-                            </div>
+                                        setEditar(true);
+
+                                        setIdProduto(p.id);
+
+                                        setTitulo(p.titulo);
+                                        setCategoria(p.categoria);
+                                        setPreco(p.preco);
+                                        setEstoque(p.estoque);
+                                        setImagem(p.imagem);
+
+                                    }}
+                                >
+                                    Editar
+                                </a>
+
+                                {/*APAGAR*/}
+                                   <a className="delete" href="" onClick={(e) => {
+                                       e.preventDefault()
+                                       Deletar(p.id)
+                                   }}>Deletar</a>
+
+                         </div>
+
+                               
+                </div>
 
                         );
 
@@ -273,5 +378,4 @@ export const ProdutosPages = () => {
             </main>
         </>
     );
-
-};
+}
