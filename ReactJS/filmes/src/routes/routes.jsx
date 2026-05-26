@@ -1,19 +1,18 @@
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+
+import Login from "../pages/login/Login";
 import CadastroFilme from "../pages/cadastrofilme/CadastroFilme";
 import CadastroGenero from "../pages/CadastroGenero/CadastroGenero";
-import Login from "../pages/login/Login";
 
-const Rotas = () => {
-  return (
-    <BrowserRouter>
-      
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/filme" element={<CadastroFilme />} />
-        <Route path="/genero" element={<CadastroGenero />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
 
-export default Rotas;
+export const Rotas = (props) => {
+    return(
+        <BrowserRouter>
+        <Routes>
+            <Route element={<Login />} path="/"/>
+            <Route element={<CadastroFilme />} path="/filmes"/>
+            <Route element={<CadastroGenero tema={props.tema} funcTrocarTema={props.funcTrocarTema} />} path="/generos"/>
+        </Routes>
+        </BrowserRouter>
+    )
+}

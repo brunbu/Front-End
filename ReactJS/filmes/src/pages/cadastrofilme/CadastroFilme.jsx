@@ -1,14 +1,31 @@
-import Footer  from "../../components/footer/Footer";
-import Header from "../../components/header/Header"
-import "./CadastroFilmes.css"
-const CadastroFilme = () => {
-    return (
-        <>
-        <Header />
-            <h1>Cadastro de Filmes</h1>
-            <Footer />
-        </>
-    )
+import "./CadastroFilme.css";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+
+function CadastroFilme() {
+
+  const [tema, setTema] = useState("Light")
+
+  const trocarTema = () => {
+    if (tema === "Light") {
+      console.log(tema)
+      setTema("Dark")
+    }
+    else {
+      console.log(tema)
+      setTema("Light")
+    }
+  }
+
+  return (
+    <>
+      <Header />
+      <main className={`section-flex section-${tema}`}>
+        <h1>Cadastro - Filme</h1> <button className="section__button" onClick={trocarTema}>Trocar tema</button>
+      </main>
+      <Footer />
+    </>
+  )
 }
 
 export default CadastroFilme

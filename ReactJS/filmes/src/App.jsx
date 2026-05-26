@@ -1,17 +1,28 @@
+import { useState } from 'react'
 import './App.css'
-import Login from "./pages/login/Login"
-import CadastroFilme from "./pages/cadastrofilme/CadastroFilme"
-import CadastroGenero from "./pages/CadastroGenero/CadastroGenero"
-import Rotas from "./routes/routes"
-import { Link } from "react-router-dom"
+import { Rotas } from './routes/routes'
 
 function App() {
+  
+  const [tema, setTema] = useState("Light")
+
+  //função de trocar o tema
+  const trocarTema = () => {
+    if (tema === "Light") {
+      console.log(tema)
+      setTema("Dark")
+    }
+    else {
+      console.log(tema)
+      setTema("Light")
+    }
+  }
 
 
   return (
-    <>
-      <Rotas /> 
-    </>
+    <main className={tema}>
+      <Rotas tema={tema} funcTrocarTema={trocarTema} />
+    </main>
   )
 }
 
