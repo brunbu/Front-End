@@ -1,11 +1,24 @@
 {
-    "Genero" : [
+  "Genero": [
     {
-    "id": 1,
-     "nome": "Romance"
+      "nome": "Animação",
+      "id": "2"
     },
-    {"id": 2, 
-    "nome": "Comedia"
+    {
+      "nome": "Comedia",
+      "id": "euZcQFd6hcI"
+    },
+    {
+      "nome": "Terror",
+      "id": "2PK6sWvkyOk"
     }
-    ]
+  ],
+  "Filme": [
+    {
+      "Titulo" : "Gente Grande",
+      "Genero":{"nome": "Comedia" },
+      "id": "1"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -8,6 +8,7 @@ const Botao = (props) => {
         onClick={() => {
             if(props.btnEditar) {
                 setEditar(false)
+                props.funcEditar()
                 return false;
             }
         }}

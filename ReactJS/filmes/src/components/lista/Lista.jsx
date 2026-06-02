@@ -58,9 +58,7 @@ const Lista = (props) => {
                                             data-cell="Gênero"
                                             style={{ display: props.visibilidade }}
                                         >
-                                            {props.tipoLista === "filme"
-                                                ? item?.genero?.nome || "-"
-                                                : "-"}
+                                            {props.tipoLista === "filme" ? (item.idGeneroNavigation?.nome || "-") : item.idGeneroNavigation?.nome}
                                         </td>
 
                                         {/* EDITAR */}
@@ -68,7 +66,7 @@ const Lista = (props) => {
                                             <button
                                                 className="icon"
                                                 onClick={() =>
-                                                    props.funcEditar?.(item)
+                                                    props.preEditar?.(item)
                                                 }
                                             >
                                                 <img src={Editar} alt="Editar" />

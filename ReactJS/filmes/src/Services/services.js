@@ -2,17 +2,17 @@
 import axios from "axios";
 
 // Define a porta onde a API local está rodando
-const apiPort = "3000";
+const apiPort = "7107";
 
 // Monta a URL base para a API local, usando a porta definida
-const localApi = `http://localhost:${apiPort}`;
+const localApi = `https://localhost:${apiPort}`;
 
 // Define uma variável para uma API externa, mas no momento ela está como 'null' (não sendo usada)
 const externalApi = null;
 
 // Cria uma instância do axios configurada com a URL base apontando para a API local
 const api = axios.create({
-    baseURL : localApi
+    baseURL: "https://localhost:7107/api"
 });
 
 // Exporta a instância do axios para ser usada em outros arquivos do projeto
