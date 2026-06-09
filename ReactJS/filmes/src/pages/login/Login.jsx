@@ -3,6 +3,7 @@ import "./Login.css";
 import Botao from "../../components/botao/Botao.jsx";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import PrivateRoute from "../../routes/PrivateRoutes";
 
 const Login = () => {
     return(
@@ -14,8 +15,11 @@ const Login = () => {
                 <h1>Login</h1>
                 <div className="campos_login">
                     <div className="campo_input">
+                        <PrivateRoute>
+
                         <label htmlFor="email">Email:</label>
                         <input type="email" name="email" placeholder="Digite seu e-mail"/>
+                        </PrivateRoute>
                     </div>
                     <div className="campo_input">
                         <label htmlFor="senha">Senha:</label>
